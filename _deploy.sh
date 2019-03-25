@@ -12,5 +12,7 @@ git clone -b book-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG}.git
 cd book-output
 cp -r ../_book/* ./
 git add --all *
+echo "https://dsbook.netlify.com/* https://ds.jiacheng.site/:splat 301!" > _redirects
+git add _redirects
 git commit -m"Update the book" || true
 git push -q origin book-pages
