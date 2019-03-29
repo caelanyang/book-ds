@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 6 Final Words | 数据结构系列文章</title>
-  <meta name="description" content="Chapter 6 Final Words | 数据结构系列文章" />
+  <title>2.2 插入节点 | 数据结构系列文章</title>
+  <meta name="description" content="2.2 插入节点 | 数据结构系列文章" />
   <meta name="generator" content="bookdown  and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 6 Final Words | 数据结构系列文章" />
+  <meta property="og:title" content="2.2 插入节点 | 数据结构系列文章" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 6 Final Words | 数据结构系列文章" />
+  <meta name="twitter:title" content="2.2 插入节点 | 数据结构系列文章" />
   
   
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="example-two.html">
-<link rel="next" href="references.html">
+<link rel="prev" href="section-2-1.html">
+<link rel="next" href="literature.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -104,7 +104,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
-<li class="chapter" data-level="2" data-path="05-summary.html"><a href="#section-2"><i class="fa fa-check"></i><b>2</b> 链表</a><ul>
+<li class="chapter" data-level="2" data-path="01-链表.html"><a href="#section-2"><i class="fa fa-check"></i><b>2</b> 链表</a><ul>
 <li class="chapter" data-level="2.1" data-path="section-2-1.html"><a href="section-2-1.html"><i class="fa fa-check"></i><b>2.1</b> 引言</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 为什么要用链表?</a></li>
 <li class="chapter" data-level="2.1.2" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 数组和链表的主要区别</a></li>
@@ -148,18 +148,149 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-words" class="section level1">
-<h1><span class="header-section-number">Chapter 6</span> Final Words</h1>
-<p>We have finished a nice book.</p>
+<div id="section-2.2" class="section level2">
+<h2><span class="header-section-number">2.2</span> 插入节点</h2>
+<p>本章节代码准备参考上一章节</p>
+<p>向链表中插入一个节点有三种方式：</p>
+<ol style="list-style-type: decimal">
+<li>在链表的最前面插入节点</li>
+<li>在给定的节点之后插入节点</li>
+<li>在链表的末尾插入节点</li>
+</ol>
+<div id="section-2.2.1" class="section level3">
+<h3><span class="header-section-number">2.2.1</span> 在链表的最前面插入节点</h3>
+<p>这种情况下，新节点总是插入在给定链表的 head 之前， 并且新添加的节点将成为链表的新的 head。 例如，如果给定的链表是 10-&gt;15-&gt;20-&gt;25，在最前面插入一个节点 5，那么链表就变成 5-&gt;10-&gt;15-&gt;20-&gt;25。</p>
+<div class="figure">
+<img src="https://github.com/caelanyang/MarkdownPictures/blob/master/Linkedlist_insert_at_start.png?raw=true" />
 
 </div>
+<p>在上节定义 的 <code>LinkedList</code> 类里面定义 <code>push()</code> 方法，需要注意的是该方法需要接收指向链表原head 的指针，因为需要将 指向原 head 指针更改为指向新节点：</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> push(<span class="va">self</span>, new_data): 
+  
+    new_node <span class="op">=</span> Node(new_data) 
+          
+    new_node.<span class="bu">next</span> <span class="op">=</span> <span class="va">self</span>.head 
+          
+    <span class="va">self</span>.head <span class="op">=</span> new_node </code></pre></div>
+<p>显然，push() 方法的时间复杂度为<span class="math inline">\(O(1)\)</span>。</p>
+</div>
+<div id="section-2.2.2" class="section level3">
+<h3><span class="header-section-number">2.2.2</span> 在给定节点的后面插入节点</h3>
+<p>给定一个节点，把新的节点插入在给定节点的后面</p>
+<div class="figure">
+<img src="https://github.com/caelanyang/MarkdownPictures/blob/master/Linkedlist_insert_middle.png?raw=true" />
+
+</div>
+<p>同样的，在 <code>LinkedList</code> 类里定义 <code>insertAfter()</code> 方法：</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> insertAfter(<span class="va">self</span>, prev_node, new_data): 
+  
+    <span class="cf">if</span> prev_node <span class="kw">is</span> <span class="va">None</span>: 
+        <span class="bu">print</span> <span class="st">&quot;The given previous node must inLinkedList.&quot;</span>
+        <span class="cf">return</span>
+  
+    new_node <span class="op">=</span> Node(new_data) 
+  
+    new_node.<span class="bu">next</span> <span class="op">=</span> prev_node.<span class="bu">next</span>
+  
+    prev_node.<span class="bu">next</span> <span class="op">=</span> new_node </code></pre></div>
+<p>显然，<code>insertafter()</code>的时间复杂度也为<span class="math inline">\(O(1)\)</span>。</p>
+</div>
+<div id="section-2.2.3" class="section level3">
+<h3><span class="header-section-number">2.2.3</span> 在结尾添加一个节点</h3>
+<p>新节点总是添加在给定的链表的最后一个节点之后。 例如，如果给定的链表是 5-&gt;10-&gt;15-&gt;20-&gt;25，我们在末尾加上一个项目30，那么链表就变成 5-&gt;10-&gt;15-&gt;20-&gt;25-&gt;30。 由于链表通常由其 head 表示，因此我们必须遍历链表直到末尾，然后将最后一个节点的 next 指向为新节点。</p>
+<div class="figure">
+<img src="https://github.com/caelanyang/MarkdownPictures/blob/master/Linkedlist_insert_last.png?raw=true" />
+
+</div>
+<p>同样的，在 <code>LinkedList</code> 类里定义 <code>append()</code> 方法：</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> append(<span class="va">self</span>, new_data): 
+
+new_node <span class="op">=</span> Node(new_data) 
+
+<span class="cf">if</span> <span class="va">self</span>.head <span class="kw">is</span> <span class="va">None</span>: 
+        <span class="va">self</span>.head <span class="op">=</span> new_node 
+        <span class="cf">return</span>
+
+last <span class="op">=</span> <span class="va">self</span>.head 
+<span class="cf">while</span> (last.<span class="bu">next</span>): 
+    last <span class="op">=</span> last.<span class="bu">next</span>
+
+last.<span class="bu">next</span> <span class="op">=</span> new_node </code></pre></div>
+<p>Time complexity of append is O(n) where n is the number of nodes in linked list. Since there is a loop from head to end, the function does O(n) work.</p>
+<p><code>append()</code>方法的时间复杂度为<span class="math inline">\(O(n)\)</span>，其中 n 是链表中的节点数。因为函数完成了对链表的一次遍历。</p>
+<p>如果链表保留一个指向链表尾部的额外指针， <code>append()</code>方法的时间复杂度可以优化为<span class="math inline">\(O(1)\)</span>.</p>
+</div>
+<div id="section-2.2.4" class="section level3">
+<h3><span class="header-section-number">2.2.4</span> 完整实现</h3>
+<p>下面是一个由 Node 类和 LinkedList 类组成的一个完整的链表实现 。</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Node class </span>
+<span class="kw">class</span> Node: 
+  
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, data): 
+        <span class="va">self</span>.data <span class="op">=</span> data <span class="co"># Assign data </span>
+        <span class="va">self</span>.<span class="bu">next</span> <span class="op">=</span> <span class="va">None</span> <span class="co"># Initialize next as null </span>
+
+<span class="co"># Linked List  </span>
+<span class="kw">class</span> LinkedList: 
+  
+    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>): 
+        <span class="va">self</span>.head <span class="op">=</span> <span class="va">None</span>
+
+
+    <span class="kw">def</span> push(<span class="va">self</span>, new_data): 
+
+        new_node <span class="op">=</span> Node(new_data) 
+
+        new_node.<span class="bu">next</span> <span class="op">=</span> <span class="va">self</span>.head 
+
+        <span class="va">self</span>.head <span class="op">=</span> new_node 
+
+
+    <span class="kw">def</span> insertAfter(<span class="va">self</span>, prev_node, new_data): 
+
+        <span class="cf">if</span> prev_node <span class="kw">is</span> <span class="va">None</span>: 
+            <span class="bu">print</span> <span class="st">&quot;The given previous node must inLinkedList.&quot;</span>
+            <span class="cf">return</span>
+
+
+        new_node <span class="op">=</span> Node(new_data) 
+
+        new_node.<span class="bu">next</span> <span class="op">=</span> prev_node.<span class="bu">next</span>
+
+        prev_node.<span class="bu">next</span> <span class="op">=</span> new_node 
+
+
+    <span class="kw">def</span> append(<span class="va">self</span>, new_data): 
+
+        new_node <span class="op">=</span> Node(new_data) 
+
+        <span class="cf">if</span> <span class="va">self</span>.head <span class="kw">is</span> <span class="va">None</span>: 
+            <span class="va">self</span>.head <span class="op">=</span> new_node 
+            <span class="cf">return</span>
+
+        last <span class="op">=</span> <span class="va">self</span>.head 
+        <span class="cf">while</span> (last.<span class="bu">next</span>): 
+            last <span class="op">=</span> last.<span class="bu">next</span>
+
+        last.<span class="bu">next</span> <span class="op">=</span> new_node 
+
+    
+    <span class="kw">def</span> printList(<span class="va">self</span>): 
+        temp <span class="op">=</span> <span class="va">self</span>.head 
+        <span class="cf">while</span> (temp): 
+            <span class="bu">print</span> temp.data, 
+            temp <span class="op">=</span> temp.<span class="bu">next</span></code></pre></div>
+
+</div>
+</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="example-two.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-2-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -189,7 +320,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/05-summary.Rmd",
+"link": "https://github.com/rstudio/bookdown/edit/master/inst/examples/01-链表.Rmd",
 "text": "Edit"
 },
 "history": {

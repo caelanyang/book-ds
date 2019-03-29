@@ -24,7 +24,7 @@
 <meta name="author" content="Jiacheng" />
 
 
-<meta name="date" content="2019-03-27" />
+<meta name="date" content="2019-03-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="3c7370616e20636c6173733d226865616465722d73656374696f6e2d6e756d626572223e323c2f7370616e3e20e993bee8a1a83c2f68313e200a3c2f6469763e.html">
-<link rel="next" href="literature.html">
+<link rel="next" href="section-2-2.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -107,10 +107,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2" data-path="01-链表.html"><a href="#section-2"><i class="fa fa-check"></i><b>2</b> 链表</a><ul>
 <li class="chapter" data-level="2.1" data-path="section-2-1.html"><a href="section-2-1.html"><i class="fa fa-check"></i><b>2.1</b> 引言</a><ul>
 <li class="chapter" data-level="2.1.1" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.1"><i class="fa fa-check"></i><b>2.1.1</b> 为什么要用链表?</a></li>
-<li class="chapter" data-level="2.1.2" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 链表的优点</a></li>
-<li class="chapter" data-level="2.1.3" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 链表的缺点</a></li>
-<li class="chapter" data-level="2.1.4" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 链表的表示形式</a></li>
-<li class="chapter" data-level="2.1.5" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.5"><i class="fa fa-check"></i><b>2.1.5</b> 链表的遍历</a></li>
+<li class="chapter" data-level="2.1.2" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.2"><i class="fa fa-check"></i><b>2.1.2</b> 数组和链表的主要区别</a></li>
+<li class="chapter" data-level="2.1.3" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.3"><i class="fa fa-check"></i><b>2.1.3</b> 链表的优点</a></li>
+<li class="chapter" data-level="2.1.4" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.4"><i class="fa fa-check"></i><b>2.1.4</b> 链表的缺点</a></li>
+<li class="chapter" data-level="2.1.5" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.5"><i class="fa fa-check"></i><b>2.1.5</b> 链表的表示形式</a></li>
+<li class="chapter" data-level="2.1.6" data-path="section-2-1.html"><a href="section-2-1.html#section-2.1.6"><i class="fa fa-check"></i><b>2.1.6</b> 链表的遍历</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="section-2-2.html"><a href="section-2-2.html"><i class="fa fa-check"></i><b>2.2</b> 插入节点</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="section-2-2.html"><a href="section-2-2.html#section-2.2.1"><i class="fa fa-check"></i><b>2.2.1</b> 在链表的最前面插入节点</a></li>
+<li class="chapter" data-level="2.2.2" data-path="section-2-2.html"><a href="section-2-2.html#section-2.2.2"><i class="fa fa-check"></i><b>2.2.2</b> 在给定节点的后面插入节点</a></li>
+<li class="chapter" data-level="2.2.3" data-path="section-2-2.html"><a href="section-2-2.html#section-2.2.3"><i class="fa fa-check"></i><b>2.2.3</b> 在结尾添加一个节点</a></li>
+<li class="chapter" data-level="2.2.4" data-path="section-2-2.html"><a href="section-2-2.html#section-2.2.4"><i class="fa fa-check"></i><b>2.2.4</b> 完整实现</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="literature.html"><a href="literature.html"><i class="fa fa-check"></i><b>3</b> Literature</a></li>
@@ -160,23 +167,42 @@ id[] = [1000, 1010, 1050, 2000, 2040]</p>
 <p>如果我们想插入一个新的 ID 1005，同时保持数组已排序，我们必须移动1000之后的所有元素(不包括1000)。 在不使用某些特殊技术得情况下，删除元素的开销也很大。 例如，要删除 id []中的1010，1010之后的所有内容都必须移动。</p>
 </div>
 <div id="section-2.1.2" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> 链表的优点</h3>
+<h3><span class="header-section-number">2.1.2</span> 数组和链表的主要区别</h3>
+<ol style="list-style-type: decimal">
+<li>数组是包含相似类型数据元素集合的数据结构，而链表则被视为非基本的数据结构，包含称为节点的无序元素集合。</li>
+<li>在数组中，使用索引访问元素，即，如果要进入第四个元素，则必须在方括号内写入变量名称及其索引或位置。</li>
+<li>但是，在一个链表中，你必须从头开始，一个节点一个节点地往后查找，直到访问到第四个元素。</li>
+<li>访问数组中的元素很快，而访问链表重的元素需要<span class="math inline">\(O(n)\)</span>(linear time)的时间复杂度，因此速度要慢一些。</li>
+<li>在数组中，插入和删除元素的操作需要耗费不少的时间，但是在链表中这两个操作就很快。</li>
+<li>数组的大小是固定的，而链表是动态、可扩展的，可以扩展或缩小大小。</li>
+<li>对于数组，其内存是在编译期间分配，而链表，内存在执行或运行时分配。</li>
+<li>数组中元素是连续存储的，而在链表中是随机存储的。</li>
+<li>由于实际数据存储在数组中的索引中，因此消耗的内存较少。 相反，链表中节点存储了额外的下一个和前一个节点的引用（双向链表），因此链表需要的内存比数组要多。</li>
+<li>此外，数组中内存利用效率比较低。 相反，链表中内存利用率更高。</li>
+</ol>
+</div>
+<div id="section-2.1.3" class="section level3">
+<h3><span class="header-section-number">2.1.3</span> 链表的优点</h3>
 <ol style="list-style-type: decimal">
 <li>动态大小</li>
 <li>易于插入 / 删除</li>
 </ol>
 </div>
-<div id="section-2.1.3" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> 链表的缺点</h3>
+<div id="section-2.1.4" class="section level3">
+<h3><span class="header-section-number">2.1.4</span> 链表的缺点</h3>
 <ol style="list-style-type: decimal">
 <li>不允许随机访问。 必须从第一个节点开始顺序地访问元素。 因此我们不能使用二分搜索的默认实现对链表进行查找。 <a href="https://www.geeksforgeeks.org/binary-search-on-singly-linked-list/">点击这里阅读</a>。</li>
 <li>每个节点的后继指针都需要消耗额外的内存空间</li>
 <li>CPU 缓存不友好。 由于数组使用连续的内存空间，借助 CPU 的缓存机制<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>，预读数组中的数据，提高访问效率。而链表的存储空间是不连续的，对 CPU 缓存不友好。</li>
 </ol>
 </div>
-<div id="section-2.1.4" class="section level3">
-<h3><span class="header-section-number">2.1.4</span> 链表的表示形式</h3>
-<p>链表由指向链表第一个节点的指针表示。 第一个节点称为链表的头。 如果链表为空，那么 head 的值为 NULL。 列表中的每个节点至少由两部分组成: 1. 数据 2. 指向下一个节点的指针(或引用)</p>
+<div id="section-2.1.5" class="section level3">
+<h3><span class="header-section-number">2.1.5</span> 链表的表示形式</h3>
+<p>链表由指向链表第一个节点的指针表示。 第一个节点称为链表的头。 如果链表为空，那么 head 的值为 NULL。 列表中的每个节点至少由两部分组成:</p>
+<ol style="list-style-type: decimal">
+<li>数据</li>
+<li>指向下一个节点的指针(或引用)</li>
+</ol>
 <p>在 c 中，可以使用结构体表示一个节点。 下面是一个带有整数数据的链表节点的示例。 在 Java 或 Python 中，LinkedList 可以表示为一个类，而 Node 可以表示为一个单独的类。 LinkedList 类包含一个 Node 类型的引用。</p>
 <p>Python 代码示例：</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">class</span> Node:
@@ -197,18 +223,16 @@ id[] = [1000, 1010, 1050, 2000, 2040]</p>
   linked_list.head.<span class="bu">next</span> <span class="op">=</span> second_node
   second_node.<span class="bu">next</span> <span class="op">=</span> third_node</code></pre></div>
 </div>
-<div id="section-2.1.5" class="section level3">
-<h3><span class="header-section-number">2.1.5</span> 链表的遍历</h3>
+<div id="section-2.1.6" class="section level3">
+<h3><span class="header-section-number">2.1.6</span> 链表的遍历</h3>
 <p>遍历上面已创建的 <code>linked_list</code></p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> print_list(linked_list):
   temp <span class="op">=</span> linked_list.head
   <span class="cf">while</span> temp:
     <span class="bu">print</span>(temp.data)
     temp <span class="op">=</span> temp.<span class="bu">next</span></code></pre></div>
-
 </div>
 </div>
-<!-- </div> -->
 <div class="footnotes">
 <hr />
 <ol start="1">
@@ -221,7 +245,7 @@ id[] = [1000, 1010, 1050, 2000, 2040]</p>
         </div>
       </div>
 <a href="3c7370616e20636c6173733d226865616465722d73656374696f6e2d6e756d626572223e323c2f7370616e3e20e993bee8a1a83c2f68313e200a3c2f6469763e.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="literature.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section-2-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
