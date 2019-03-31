@@ -1,4 +1,4 @@
-book_filename: "DataStructure"
+book_filename: "Data Structure"
 delete_merged_file: true
 output_dir: _book
 clean: [packages.bib, bookdown.bbl]
